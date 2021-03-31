@@ -39,6 +39,7 @@ public class Talent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             talent.AddLevel();
             text.SetText(talent.level.ToString());
             Tooltip.instance.SetText(talent);
+            UIController.instance.UpdateTalents();
         }
     }
 

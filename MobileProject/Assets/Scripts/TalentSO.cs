@@ -44,4 +44,20 @@ public class TalentSO : ScriptableObject
 
         return (copy);
     }
+
+    public void ResetTotals()
+    {
+        addedFlat = 0;
+        dmgMulti = 0;
+        addedHealth = 0;
+        healthMultiplier = 0;
+    }
+
+    public void AddTalent(TalentSO _talent)
+    {
+        addedFlat += _talent.addedFlat;
+        dmgMulti += _talent.dmgMulti;
+        addedHealth += _talent.addedHealth;
+        healthMultiplier += _talent.healthMultiplier;
+    }
 }

@@ -860,6 +860,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2322617844146292042, guid: d9caa7efb7e65e74da754e55e5ab59ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2416133769017398663, guid: d9caa7efb7e65e74da754e55e5ab59ed, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -1508,7 +1512,8 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2322617844146292042, guid: d9caa7efb7e65e74da754e55e5ab59ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d9caa7efb7e65e74da754e55e5ab59ed, type: 3}
 --- !u!1001 &4376016371668806473
 PrefabInstance:
@@ -1687,6 +1692,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4080822850689951388, guid: 9644d2df3d2813744826f0d404e65c59, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080822850689951388, guid: 9644d2df3d2813744826f0d404e65c59, type: 3}
+      propertyPath: talents
+      value: 
+      objectReference: {fileID: 11400000, guid: a3d2f715056c0ce45a0189d398d74eb2, type: 2}
     - target: {fileID: 4080822850689951391, guid: 9644d2df3d2813744826f0d404e65c59, type: 3}
       propertyPath: m_Name
       value: HeroKnight

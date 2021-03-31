@@ -59,4 +59,11 @@ public class UIController : MonoBehaviour
         if (updateTalentPoints != null)
             updateTalentPoints(_points);
     }
+
+    public event Action updateTalents;
+    public void UpdateTalents()
+    {
+        if (updateTalents != null)
+            updateTalents();
+    }
 }

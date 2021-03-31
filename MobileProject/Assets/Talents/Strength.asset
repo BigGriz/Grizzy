@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   maxLevel: 10
-  addedFlat: 1
+  addedFlat: 0
   addedDamageFlat: 1
   addedDamageFlatPerLevel: 1.5
-  addedDamageMultiplierPerLevel: 0
-  addedDamageMultiplierBase: 0
-  addedDamageMultiplier: 0
+  dmgMultiPerLvl: 0
+  dmgMultiBase: 0
+  dmgMulti: 0
   addedHealth: 0
   healthMultiplier: 0

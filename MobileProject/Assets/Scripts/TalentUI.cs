@@ -24,6 +24,15 @@ public class TalentUI : MonoBehaviour
         {
             talents.Add(n.talent);
         }
+
+        GetTotals();
+
+        UIController.instance.updateTalents += GetTotals;
+    }
+
+    private void OnDestroy()
+    {
+        UIController.instance.updateTalents -= GetTotals;
     }
     #endregion Setup
 
@@ -35,5 +44,17 @@ public class TalentUI : MonoBehaviour
             show = !show;
             anim.SetBool("ShowTalents", show);
         }
+    }
+
+    public void GetTotals()
+    {
+        talentModifiers.ResetTotals();
+
+        foreach(TalentSO n in talents)
+        {
+            talentModifiers.AddTalent(n);
+        }
+
+        PlayerController.instance.UpdateDamage();
     }
 }

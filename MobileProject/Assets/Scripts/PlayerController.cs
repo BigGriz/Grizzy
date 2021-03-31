@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     // Local Variables
     float currentHealth;
-    float dps;
     Animator anim;
     Rigidbody2D rb;
     bool dashing;
@@ -28,16 +27,27 @@ public class PlayerController : MonoBehaviour
     AttackHitBox ahb;
     HPBar hp;
 
-    void UpdateDamage()
+    public TalentSO talents;
+
+    public void UpdateDamage()
     {
-        UIController.instance.UpdateDamage(damage * attackSpeed);
+        UIController.instance.UpdateDamage((damage + talents.addedFlat) * talents.dmgMulti * attackSpeed);
     }
 
+
+    public static PlayerController instance;
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("More than one player exists!");
+            Destroy(this.gameObject);
+        }
+        instance = this;
+
+
         moveVec = Vector2.right;
         currentHealth = health;
-        dps = damage * attackSpeed;
 
         ahb = GetComponentInChildren<AttackHitBox>();
         anim = GetComponent<Animator>();
@@ -126,7 +136,7 @@ public class PlayerController : MonoBehaviour
     public void DealDamage()
     {
         if (collided)
-            collided.TakeDamage(1.0f);
+            collided.TakeDamage(GetVariable(VariableType.DAMAGE));
     }
 
     public static bool IsPointerOverUIObject()
@@ -136,6 +146,27 @@ public class PlayerController : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
+    }
+
+    public float GetVariable(VariableType _type)
+    {
+        switch(_type)
+        {
+            case VariableType.DAMAGE:
+            {
+                return Mathf.RoundToInt((damage + talents.addedFlat) * talents.dmgMulti);
+            }
+            case VariableType.ATKSPD:
+            {
+                return attackSpeed;
+            }
+            case VariableType.HP:
+            {
+                return Mathf.RoundToInt((health + talents.addedHealth) * talents.healthMultiplier);
+            }
+            default:
+                return 0.0f;
+        }
     }
 
     #region CollisionEvents
@@ -163,4 +194,11 @@ public class PlayerController : MonoBehaviour
             collided = null;
     }
     #endregion CollisionEvents
+}
+
+public enum VariableType
+{
+    DAMAGE,
+    ATKSPD,
+    HP,
 }

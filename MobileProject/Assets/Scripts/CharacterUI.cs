@@ -8,6 +8,10 @@ public class CharacterUI : MonoBehaviour
     Animator anim;
     bool show;
 
+    public TMPro.TextMeshProUGUI damageText;
+    public TMPro.TextMeshProUGUI atkSpdText;
+    public TMPro.TextMeshProUGUI hpText;
+
     #region Setup
     private void Awake()
     {
@@ -22,6 +26,14 @@ public class CharacterUI : MonoBehaviour
         {
             show = !show;
             anim.SetBool("ShowCharacter", show);
+            UpdateTextElements();
         }
+    }
+
+    public void UpdateTextElements()
+    {
+        damageText.SetText("DAMAGE: " + PlayerController.instance.GetVariable(VariableType.DAMAGE).ToString());
+        atkSpdText.SetText("ATK SPD: " + PlayerController.instance.GetVariable(VariableType.ATKSPD).ToString());
+        hpText.SetText("HEALTH: " + PlayerController.instance.GetVariable(VariableType.HP).ToString());
     }
 }
