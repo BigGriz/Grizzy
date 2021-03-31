@@ -8,10 +8,22 @@ public class TalentUI : MonoBehaviour
     Animator anim;
     bool show;
 
+    public TalentSO talentModifiers;
+    List<TalentSO> talents;
+
     #region Setup
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        talents = new List<TalentSO>();
+    }
+
+    private void Start()
+    {
+        foreach(Talent n in GetComponentsInChildren<Talent>())
+        {
+            talents.Add(n.talent);
+        }
     }
     #endregion Setup
 

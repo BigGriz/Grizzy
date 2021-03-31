@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
     AttackHitBox ahb;
     HPBar hp;
 
+    void UpdateDamage()
+    {
+        UIController.instance.UpdateDamage(damage * attackSpeed);
+    }
+
     private void Awake()
     {
         moveVec = Vector2.right;
@@ -41,34 +47,42 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("SpeedMultiplier", attackSpeed);
     }
 
+    private void Start()
+    {
+        Invoke("UpdateDamage", 0.1f);
+    }
+
     // Update is called once per frame
     void Update()
     {
         rb.velocity = (collided) ? Vector2.zero : (dashing) ? moveVec * moveSpeed * 5.0f : moveVec * moveSpeed;
 
-        if (Input.GetMouseButtonDown(0))
+        if (!IsPointerOverUIObject())
         {
-            // If in range - Attack
-            if (collided)
+            if (Input.GetMouseButtonDown(0))
             {
-                attacking = false;
-                anim.SetTrigger("AttackClick");
-                return;
+                // If in range - Attack
+                if (collided)
+                {
+                    attacking = false;
+                    anim.SetTrigger("AttackClick");
+                    return;
+                }
+                // If not in range - Dash forward
+                dashing = true;
             }
-            // If not in range - Dash forward
-            dashing = true;
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            // If in range - Attack
-            if (collided)
+            else if (Input.GetMouseButtonDown(1))
             {
-                attacking = false;
-                blocking = true;
-                return;
+                // If in range - Attack
+                if (collided)
+                {
+                    attacking = false;
+                    blocking = true;
+                    return;
+                }
+                // If not in range - Dash forward
+                dashing = true;
             }
-            // If not in range - Dash forward
-            dashing = true;
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -113,6 +127,15 @@ public class PlayerController : MonoBehaviour
     {
         if (collided)
             collided.TakeDamage(1.0f);
+    }
+
+    public static bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
     #region CollisionEvents

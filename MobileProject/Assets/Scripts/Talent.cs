@@ -13,8 +13,6 @@ public class Talent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 {
     public TalentType type;
     public Talent talentDependency;
-    public int level = 0;
-    public int maxLevel = 10;
     TMPro.TextMeshProUGUI text;
 
     public TalentSO talent;
@@ -22,7 +20,8 @@ public class Talent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     private void Awake()
     {
         text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        text.SetText(level.ToString());
+        text.SetText(talent.level.ToString());
+        talent = Instantiate(talent);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -33,10 +32,13 @@ public class Talent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             {
                 // Add to Action Bar
                 talent.AddLevel();
+                text.SetText(talent.level.ToString());
+                Tooltip.instance.SetText(talent);
                 return;
             }
             talent.AddLevel();
-            text.SetText(level.ToString());
+            text.SetText(talent.level.ToString());
+            Tooltip.instance.SetText(talent);
         }
     }
 

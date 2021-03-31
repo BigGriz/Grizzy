@@ -25,6 +25,6 @@ public class DamageUI : MonoBehaviour
 
     public void UpdateDamage(float _damage)
     {
-        textComponent.SetText(Mathf.RoundToInt(_damage).ToString());
+        textComponent.SetText("DPS: " + ((Mathf.RoundToInt(_damage) * 10.0f)/10.0f).ToString());
     }
 }

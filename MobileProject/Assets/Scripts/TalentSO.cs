@@ -13,8 +13,9 @@ public class TalentSO : ScriptableObject
     public int addedDamageFlat;
     public float addedDamageFlatPerLevel;
     [Header("Added Damage Multipliers")]
-    public float addedDamageMultiplierPerLevel;
-    public float addedDamageMultiplier;
+    public float dmgMultiPerLvl;
+    public float dmgMultiBase;
+    public float dmgMulti;
     [Header("Added Health Flat")]
     public int addedHealth;
     [Header("Added Health Multiplier")]
@@ -23,18 +24,24 @@ public class TalentSO : ScriptableObject
     public void AddLevel()
     {
         level++; 
-        Debug.Log("Level " + level + " added this much flat damage " + Mathf.RoundToInt((float)addedDamageFlat * Mathf.Pow(addedDamageFlatPerLevel, level)));
+        // Flat Damage
         addedFlat += Mathf.RoundToInt((float)addedDamageFlat * Mathf.Pow(addedDamageFlatPerLevel, level));
-        GetFlatDamage();
+
+        // Damage multiplier
+        dmgMulti += dmgMultiBase * Mathf.Pow(dmgMultiPerLvl, level);
+        // Round to one decimal place
+        dmgMulti = (float)Mathf.RoundToInt(dmgMulti * 100.0f) / 100.0f;
+
+        // not set up properly
+        addedHealth += addedHealth;
+        healthMultiplier += healthMultiplier;
     }
 
-    public int GetNextLevel()
+    public TalentSO GetNextLevel()
     {
-        return (addedFlat + Mathf.RoundToInt((float)addedDamageFlat * Mathf.Pow(addedDamageFlatPerLevel, level + 1)));
-    }
+        TalentSO copy = Instantiate(this);
+        copy.AddLevel();
 
-    public int GetFlatDamage()
-    {
-        return (addedDamageFlat);
+        return (copy);
     }
 }

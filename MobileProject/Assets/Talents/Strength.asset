@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b1bacc6c33725498d8c2b518b108da, type: 3}
   m_Name: Strength
   m_EditorClassIdentifier: 
-  level: 10
+  level: 0
   maxLevel: 10
-  addedFlat: 170
+  addedFlat: 1
   addedDamageFlat: 1
   addedDamageFlatPerLevel: 1.5
   addedDamageMultiplierPerLevel: 0
+  addedDamageMultiplierBase: 0
   addedDamageMultiplier: 0
   addedHealth: 0
   healthMultiplier: 0
