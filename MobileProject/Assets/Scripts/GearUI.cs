@@ -18,11 +18,11 @@ public class GearUI : MonoBehaviour
     #region Callbacks
     private void Start()
     {
-        UIController.instance.addGear += AddGear;
+        CallbackHandler.instance.addGear += AddGear;
     }
     private void OnDestroy()
     {
-        UIController.instance.addGear -= AddGear;
+        CallbackHandler.instance.addGear -= AddGear;
     }
     #endregion Callbacks
 

@@ -18,11 +18,11 @@ public class LevelUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIController.instance.updateLevel += UpdateLevel;
+        CallbackHandler.instance.updateLevel += UpdateLevel;
     }
     private void OnDestroy()
     {
-        UIController.instance.updateLevel -= UpdateLevel;
+        CallbackHandler.instance.updateLevel -= UpdateLevel;
     }
     #endregion Callbacks
 

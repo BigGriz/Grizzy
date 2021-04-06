@@ -25,8 +25,7 @@ public class CharacterUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             show = !show;
-            anim.SetBool("ShowCharacter", show);
-            UpdateTextElements();
+            anim.SetBool("Show", show);
         }
     }
 

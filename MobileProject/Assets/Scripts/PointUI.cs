@@ -12,11 +12,11 @@ public class PointUI : MonoBehaviour
 
     private void Start()
     {
-        UIController.instance.updateTalentPoints += UpdateTalentPoints;
+        CallbackHandler.instance.updateTalentPoints += UpdateTalentPoints;
     }
     private void OnDestroy()
     {
-        UIController.instance.updateTalentPoints -= UpdateTalentPoints;
+        CallbackHandler.instance.updateTalentPoints -= UpdateTalentPoints;
     }
 
     public void UpdateTalentPoints(int _points)

@@ -27,12 +27,12 @@ public class TalentUI : MonoBehaviour
 
         GetTotals();
 
-        UIController.instance.updateTalents += GetTotals;
+        CallbackHandler.instance.updateTalents += GetTotals;
     }
 
     private void OnDestroy()
     {
-        UIController.instance.updateTalents -= GetTotals;
+        CallbackHandler.instance.updateTalents -= GetTotals;
     }
     #endregion Setup
 
@@ -42,7 +42,7 @@ public class TalentUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             show = !show;
-            anim.SetBool("ShowTalents", show);
+            anim.SetBool("Show", show);
         }
     }
 
@@ -54,7 +54,5 @@ public class TalentUI : MonoBehaviour
         {
             talentModifiers.AddTalent(n);
         }
-
-        PlayerController.instance.UpdateDamage();
     }
 }

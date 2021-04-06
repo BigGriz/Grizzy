@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
 
     public TalentSO talents;
 
-    public void UpdateDamage()
+    public void UpdateUI()
     {
-        UIController.instance.UpdateDamage((damage + talents.addedFlat) * talents.dmgMulti * attackSpeed);
+        CallbackHandler.instance.UpdateDamage((damage + PlayerInventory.instance.GetGearTotals() + talents.addedFlat) * talents.dmgMulti * attackSpeed);
     }
 
 
@@ -59,7 +59,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Invoke("UpdateDamage", 0.1f);
+        CallbackHandler.instance.updateUI += UpdateUI;
+
+        Invoke("UpdateUI", 0.1f);
+    }
+
+    private void OnDestroy()
+    {
+        CallbackHandler.instance.updateUI -= UpdateUI;
     }
 
     // Update is called once per frame
@@ -154,7 +161,7 @@ public class PlayerController : MonoBehaviour
         {
             case VariableType.DAMAGE:
             {
-                return Mathf.RoundToInt((damage + talents.addedFlat) * talents.dmgMulti);
+                return Mathf.RoundToInt((damage + PlayerInventory.instance.GetGearTotals() + talents.addedFlat) * talents.dmgMulti);
             }
             case VariableType.ATKSPD:
             {

@@ -169,11 +169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 0.7
   hpBar: {fileID: 8026438223265831770}
-  damage: 3
+  damage: 1
   moveSpeed: 3
   health: 30
   blockAmount: 0.5
   collided: {fileID: 0}
+  talents: {fileID: 11400000, guid: a3d2f715056c0ce45a0189d398d74eb2, type: 2}
 --- !u!114 &7485062395244151312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +191,8 @@ MonoBehaviour:
   xp: 0
   xpRequired: 20
   level: 1
+  talentPoints: 10
+  gear: []
 --- !u!1 &8026438222672040400
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class ShopUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             show = !show;
-            anim.SetBool("ShowShop", show);
+            anim.SetBool("Show", show);
         }
     }
 }

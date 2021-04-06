@@ -17,11 +17,11 @@ public class XPUI : MonoBehaviour
     #region Callbacks
     private void Start()
     {
-        UIController.instance.updateXP += UpdateXP;
+        CallbackHandler.instance.updateXP += UpdateXP;
     }
     private void OnDestroy()
     {
-        UIController.instance.updateXP -= UpdateXP;
+        CallbackHandler.instance.updateXP -= UpdateXP;
     }
     #endregion Callbacks
 

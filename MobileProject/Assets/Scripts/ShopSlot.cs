@@ -52,6 +52,6 @@ public class ShopSlot : MonoBehaviour, IPointerDownHandler
             return;
 
         if (PlayerInventory.instance.SpendCoin(gear.cost))
-            UIController.instance.AddGear(gear);
+            CallbackHandler.instance.AddGear(Instantiate(gear));
     }
 }

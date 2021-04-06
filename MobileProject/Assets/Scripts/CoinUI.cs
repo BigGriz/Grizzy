@@ -15,11 +15,11 @@ public class CoinUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIController.instance.updateCoins += UpdateCoins;
+        CallbackHandler.instance.updateCoins += UpdateCoins;
     }
     private void OnDestroy()
     {
-        UIController.instance.updateCoins -= UpdateCoins;
+        CallbackHandler.instance.updateCoins -= UpdateCoins;
     }
     #endregion Callbacks
 

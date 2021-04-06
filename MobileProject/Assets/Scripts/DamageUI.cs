@@ -15,16 +15,16 @@ public class DamageUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIController.instance.updateDamage += UpdateDamage;
+        CallbackHandler.instance.updateDamage += UpdateDamage;
     }
     private void OnDestroy()
     {
-        UIController.instance.updateDamage -= UpdateDamage;
+        CallbackHandler.instance.updateDamage -= UpdateDamage;
     }
     #endregion Callbacks
 
     public void UpdateDamage(float _damage)
     {
-        textComponent.SetText("DPS: " + ((Mathf.RoundToInt(_damage) * 10.0f)/10.0f).ToString());
+        textComponent.SetText("DPS: " + (Mathf.RoundToInt((_damage) * 100.0f)/100.0f).ToString());
     }
 }

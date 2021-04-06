@@ -1840,7 +1840,7 @@ Animator:
   m_GameObject: {fileID: 980168920558765264}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87acb66334b30654b8519bc86c347060, type: 2}
+  m_Controller: {fileID: 9100000, guid: dddb1beb9905d564eb063cd92fb24c01, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538fa1b16e3e8c948968c25bbae13573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talentModifiers: {fileID: 0}
+  talentModifiers: {fileID: 11400000, guid: a3d2f715056c0ce45a0189d398d74eb2, type: 2}
 --- !u!1 &1030564492334313527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +2996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  option: 0
 --- !u!1 &2167450461402046275
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,6 +3789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8590761579650918358}
+  option: 0
 --- !u!1 &3303994990899331551
 GameObject:
   m_ObjectHideFlags: 0
@@ -4137,6 +4139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 939178315032911693}
+  option: 0
 --- !u!1 &3604673367751363999
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,6 +6483,7 @@ GameObject:
   - component: {fileID: 4041653716208198628}
   - component: {fileID: 4041653716208198630}
   - component: {fileID: 4041653716208198629}
+  - component: {fileID: 7318420420512692962}
   m_Layer: 5
   m_Name: UIBar
   m_TagString: Untagged
@@ -6549,6 +6553,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7318420420512692962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041653716208198627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0604c7c93e87b4bb3e6a89babb9629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4041653716320872602
 GameObject:
   m_ObjectHideFlags: 0
@@ -9750,6 +9766,7 @@ GameObject:
   - component: {fileID: 8812599692199636766}
   - component: {fileID: 296842650434731713}
   - component: {fileID: 4769004850509545888}
+  - component: {fileID: 8489368023641461111}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -9832,6 +9849,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f837584a88c6c9458736fd19405d202, type: 2}
   shopSlotPrefab: {fileID: 5249739412295405086, guid: 4f08e7d7b39cf1f4aaf14269b1d3f785, type: 3}
   layoutGroup: {fileID: 1261965326058249920}
+--- !u!95 &8489368023641461111
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104997590827658496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3cb8ec9868ab84448fb6cbc8def4666, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5266129633652794402
 GameObject:
   m_ObjectHideFlags: 0

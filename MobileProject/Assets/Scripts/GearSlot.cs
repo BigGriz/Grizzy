@@ -17,18 +17,18 @@ public class GearSlot : MonoBehaviour, IPointerDownHandler
             textComponents.Add(n);
         }
     }
-    #endregion Setup
-    Gear gear;
 
+    Gear gear;
     private void Start()
     {
+        // Equip Gear (if any)
         EquipItem(gear);
     }
 
-    public bool HasGear()
-    {
-        return (gear);
-    }
+    #endregion Setup
+    #region Utility
+    public bool HasGear() { return (gear); }
+    #endregion Utility
 
     public void EquipItem(Gear _gear)
     {
@@ -53,12 +53,18 @@ public class GearSlot : MonoBehaviour, IPointerDownHandler
         textComponents[3].SetText("");
     }
 
+    #region PointerEvents
     public void OnPointerDown(PointerEventData eventData)
     {
         if (!gear)
             return;
 
+        // If Gear - Upgrade & Update UI Elements
         gear.Upgrade();
         EquipItem(gear);
+
+        CallbackHandler.instance.UpdateUI();
     }
+    #endregion PointerEvents
+
 }
